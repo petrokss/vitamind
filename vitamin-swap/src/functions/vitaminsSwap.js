@@ -10,10 +10,7 @@ const swap = (line, source, target, max, min) => {
     const bufferColor = getBufferColor(source, target);
 
     const ops1 = swap(line, source, bufferColor, max, min + 1);
-    // const result = [min, line[min - 3].color, target];
     const result = {edges:min, from: line[min - 3].color, color: target};
-
-    console.log('result: ', result);
     
     line[min - 3].color = target;
     const ops2 = swap(line, bufferColor, target, max, min + 1);
@@ -34,6 +31,10 @@ const getOtherSide = (line, color) => {
     }
   }
 };
+
+export const getColor = color => {
+  return color === "W" ? "white" : color === "B" ? "black" : "grey"
+}
 
 const getMaxColors = line => {
   const byColor = {
